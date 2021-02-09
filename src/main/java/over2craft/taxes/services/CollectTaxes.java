@@ -32,16 +32,6 @@ public class CollectTaxes {
         }));
     }
 
-    public void startFakeCollecting() {
-
-        es.getTaxes().forEach((taxingSection -> {
-            for (OfflinePlayer offlinePlayer : Bukkit.getOfflinePlayers()) {
-                System.out.println(offlinePlayer.getUniqueId());
-                collect(offlinePlayer, taxingSection);
-            }
-        }));
-    }
-
     public void startCollecting(OfflinePlayer player) {
         es.getTaxes().forEach((taxingSection -> collect(player, taxingSection)));
     }

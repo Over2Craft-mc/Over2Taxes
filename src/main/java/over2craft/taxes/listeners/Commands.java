@@ -23,7 +23,7 @@ public class Commands implements CommandExecutor {
             (new CollectTaxes(new EventSection(EventType.onCommand))).
                     enableVerbose(sender)
                     .fake(true)
-                    .startFakeCollecting();
+                    .startCollecting();
             sender.sendMessage("[Over2Taxes] Stopped fake collecting...");
             return true;
         }
