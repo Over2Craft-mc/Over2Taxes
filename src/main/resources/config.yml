@@ -1,0 +1,75 @@
+taxes:
+  notify:
+    # Execute a command when collecting money to a player who is offline
+    offline-command:
+      - "/mail send $player Tu as été taxé de $withdraw Overs. Il te reste $money Overs"
+
+    # Send a message when collecting money to a player who is online*
+    # Define colors with "§" (not "&")
+    send-message-if-online:
+      - "§6§lOver§b§l2§2Craft §f- Tu as été taxé de $withdraw Overs. Il te reste $money Overs"
+
+  # Collecting players money when /over2taxes-collect is sent
+  # Use /over2taxes-collect-verbose for a verbose mode
+  onCommand:
+
+    # Name this as you want
+    not_too_rich:
+      # Minimum player's money to match this task. min is included
+      # If playerMoney >= min... remove value
+      # [min, max[
+      min: 200000
+      # Maximum player's money to match this task. max is excluded
+      # If playerMoney < max... remove value
+      # [min, max[
+      max: 700000
+      # - ABSOLUTE = Withdraw the exact value from the player balance (playerBalance = playerBalance - value)
+      # - PERCENT = Withdraw a percentage of the player balance (playerBalance = playerBalance - playerBalance * value / 100)
+      type: PERCENT
+      value: 1
+
+    rich:
+      min: 700000
+      # [min, max[
+      max: 1500000
+      type: PERCENT
+      value: 2
+
+    really_rich:
+      min: 1500000
+      # [min, max[
+      max: 9999999999
+      type: PERCENT
+      value: 3
+
+  # Collecting players money when they die
+  onDeath:
+    # Name this as you want
+    not_too_rich:
+      # Minimum player's money to match this task. min is included
+      # If playerMoney >= min... remove value
+      # [min, max[
+      min: 200000
+      # Maximum player's money to match this task. max is excluded
+      # If playerMoney < max... remove value
+      # [min, max[
+      max: 700000
+      # - ABSOLUTE = Withdraw the exact value from the player balance (playerBalance = playerBalance - value)
+      # - PERCENT = Withdraw a percentage of the player balance (playerBalance = playerBalance - playerBalance * value / 100)
+      type: PERCENT
+      value: 1
+
+    rich:
+      min: 700000
+      # [min, max[
+      max: 1500000
+      type: PERCENT
+      value: 2
+
+    really_rich:
+      min: 1500000
+      # [min, max[
+      max: 9999999999
+      type: PERCENT
+      value: 3
+

@@ -1,0 +1,28 @@
+name: Taxes
+version: ${project.version}
+main: over2craft.taxes.Taxes
+api-version: 1.16
+depend: [Vault]
+authors: [ Over2Craft, magrigri ]
+description: A taxing system
+website: http://over2craft.com
+
+commands:
+  over2taxes-collect:
+    description: Collect taxes of all players with Over2Taxes
+    permission: over2craft.Over2Taxes.admin
+    usage: "Usage: /over2taxes-collect or /over2taxes-collect-verbose"
+
+  over2taxes-collect-verbose:
+    description: Collect taxes of all players with Over2Taxes
+    permission: over2craft.Over2Taxes.admin
+    usage: "Usage: /over2taxes-collect or /over2taxes-collect-verbose"
+
+  over2taxes-reload:
+    description: Reload Over2Taxes
+    permission: over2craft.Over2Taxes.admin
+
+permissions:
+  over2craft.Over2Taxes.admin:
+    description: Grant admin permissions on Over2Taxes
+    default: op
