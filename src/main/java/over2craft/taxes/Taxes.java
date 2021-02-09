@@ -6,13 +6,15 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import over2craft.taxes.listeners.Commands;
 import over2craft.taxes.listeners.OnDeath;
+import over2craft.taxes.taxes.CollectTaxes;
+import over2craft.taxes.taxes.listeners.CancelOnTest;
+import over2craft.taxes.taxes.listeners.NotifyAdmin;
+import over2craft.taxes.taxes.listeners.NotifyPlayers;
+import over2craft.taxes.taxes.listeners.WithDrawPlayer;
 
 import java.util.Objects;
 
 public final class Taxes extends JavaPlugin {
-
-    // TODO : Format number
-    // TODO : Async
 
     private Economy econ;
 
@@ -42,6 +44,11 @@ public final class Taxes extends JavaPlugin {
                     commandSender.sendMessage(" ");
                     return true;
                 });
+
+        CollectTaxes.registerListener(new NotifyPlayers());
+        CollectTaxes.registerListener(new CancelOnTest());
+        CollectTaxes.registerListener(new NotifyAdmin());
+        CollectTaxes.registerListener(new WithDrawPlayer());
 
     }
 

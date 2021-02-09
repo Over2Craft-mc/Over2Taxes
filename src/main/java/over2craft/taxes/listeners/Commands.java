@@ -5,7 +5,7 @@ import over2craft.taxes.configuration.EventType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import over2craft.taxes.services.CollectTaxes;
+import over2craft.taxes.taxes.CollectTaxes;
 
 public class Commands implements CommandExecutor {
 

@@ -6,7 +6,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import over2craft.taxes.services.CollectTaxes;
+import over2craft.taxes.taxes.CollectTaxes;
 
 public class OnDeath implements Listener {
 
