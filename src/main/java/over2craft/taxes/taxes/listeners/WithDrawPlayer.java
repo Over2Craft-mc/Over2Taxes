@@ -18,7 +18,7 @@ public class WithDrawPlayer implements ITaxCollectorEvent {
         }
 
         if (e.getTaxConfigSection().getTaxingType() == TaxingType.PERCENT) {
-            e.setPlayerNewBalance(e.getPlayerOldBalance() * e.getTaxConfigSection().getValue() / 100);
+            e.setPlayerNewBalance(e.getPlayerOldBalance() - e.getPlayerOldBalance() * e.getTaxConfigSection().getValue() / 100);
         }
     }
 }
