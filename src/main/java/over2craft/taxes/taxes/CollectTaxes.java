@@ -9,11 +9,11 @@ import org.bukkit.OfflinePlayer;
 import over2craft.taxes.Taxes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 
 
 public class CollectTaxes {
-
 
     private CommandSender sender;
     private final EventSection eventTypeConfigSection;
@@ -30,16 +30,16 @@ public class CollectTaxes {
 
     public void startCollecting() {
 
-        eventTypeConfigSection.getTaxes().forEach((taxingSection -> {
-            for (OfflinePlayer offlinePlayer : Bukkit.getOfflinePlayers()) {
-                System.out.println(offlinePlayer.getUniqueId());
-                collect(offlinePlayer, taxingSection);
-            }
-        }));
+        Arrays.stream(Bukkit.getOfflinePlayers()).distinct().forEach((
+                offlinePlayer -> eventTypeConfigSection.getTaxes().forEach(
+                    (taxingSection -> collect(offlinePlayer, taxingSection, getEconomy().getBalance(offlinePlayer)))
+        )));
     }
 
     public void startCollecting(OfflinePlayer player) {
-        eventTypeConfigSection.getTaxes().forEach((taxingSection -> collect(player, taxingSection)));
+        eventTypeConfigSection.getTaxes().forEach(
+                taxingSection -> collect(player, taxingSection, getEconomy().getBalance(player))
+        );
     }
 
     public CollectTaxes fake(boolean fake) {
@@ -52,11 +52,11 @@ public class CollectTaxes {
         return this;
     }
 
-    private void collect(OfflinePlayer player, TaxingSection taxConfigSection) {
+    private void collect(OfflinePlayer player, TaxingSection taxConfigSection, double money) {
 
         CollectorEvent e = new CollectorEvent();
         e.setFake(fake);
-        e.setPlayerOldBalance(getEconomy().getBalance(player));
+        e.setPlayerOldBalance(money);
         e.setTaxConfigSection(taxConfigSection);
         e.setOfflinePlayer(player);
 
